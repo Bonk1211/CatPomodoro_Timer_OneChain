@@ -1,0 +1,36 @@
+.cat-sprite-container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.cat-sprite {
+  width: 100px;
+  height: 100px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .cat-sprite-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cat-sprite {
+    width: 75px;
+    height: 75px;
+  }
+}
+

@@ -1,0 +1,32 @@
+{
+  "name": "pixel-cat-pomodoro",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "validate": "node runValidation.js",
+    "validate:browser": "echo 'Open validation-test.html in browser' && open validation-test.html",
+    "faucet": "./scripts/request-testnet-tokens.sh",
+    "faucet:help": "echo 'Usage: npm run faucet <ADDRESS>' && echo 'Example: npm run faucet 0x1234...'"
+  },
+  "dependencies": {
+    "@metamask/detect-provider": "^2.0.0",
+    "@mysten/dapp-kit": "^0.19.9",
+    "@mysten/sui": "^1.45.0",
+    "@onelabs/dapp-kit": "^0.15.5",
+    "@onelabs/sui": "^1.26.2",
+    "@tanstack/react-query": "^5.0.0",
+    "ethers": "^6.15.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8"
+  }
+}

@@ -1,0 +1,292 @@
+/* Treasury Status Component Styles */
+
+.treasury-status {
+  font-family: 'Press Start 2P', cursive;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #00ff88;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.treasury-status.compact {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.treasury-status.compact:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.02);
+}
+
+.treasury-status.error {
+  border-color: #ff0000;
+}
+
+.treasury-loading,
+.treasury-error {
+  color: #00ff88;
+  font-size: 10px;
+  text-align: center;
+  padding: 8px;
+}
+
+.treasury-error {
+  color: #ff6666;
+}
+
+/* Compact View */
+.treasury-compact-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.treasury-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.treasury-balance {
+  color: #00ff88;
+  font-size: 10px;
+}
+
+.treasury-compact-details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #00ff88;
+  font-size: 8px;
+  color: #00ff88;
+}
+
+.treasury-compact-details div {
+  margin-top: 4px;
+}
+
+/* Full View */
+.treasury-status.full {
+  max-width: 500px;
+}
+
+.treasury-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #00ff88;
+}
+
+.treasury-header h3 {
+  color: #00ff88;
+  font-size: 12px;
+  margin: 0;
+}
+
+.treasury-refresh-btn {
+  background: transparent;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.treasury-refresh-btn:hover:not(:disabled) {
+  background: #00ff88;
+  color: #000;
+  transform: scale(1.05);
+}
+
+.treasury-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.treasury-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.treasury-balance-display {
+  background: rgba(0, 255, 136, 0.1);
+  border: 2px solid #00ff88;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.balance-label {
+  color: #00ff88;
+  font-size: 8px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.balance-amount {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.balance-unit {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.balance-status {
+  color: #00ff88;
+  font-size: 8px;
+  margin-top: 8px;
+}
+
+.treasury-details {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: #00ff88;
+  font-size: 8px;
+}
+
+.detail-value {
+  color: #fff;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+/* Warning Messages */
+.treasury-warning {
+  background: rgba(255, 170, 0, 0.1);
+  border: 2px solid #ffaa00;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.treasury-warning.critical {
+  background: rgba(255, 102, 0, 0.1);
+  border-color: #ff6600;
+}
+
+.treasury-warning.empty {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: #ff0000;
+}
+
+.warning-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.warning-message {
+  flex: 1;
+  color: #ffaa00;
+  font-size: 8px;
+  line-height: 1.4;
+}
+
+.treasury-warning.critical .warning-message {
+  color: #ff6600;
+}
+
+.treasury-warning.empty .warning-message {
+  color: #ff0000;
+}
+
+.warning-action {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid currentColor;
+  font-style: italic;
+}
+
+.treasury-healthy-message {
+  background: rgba(0, 255, 136, 0.1);
+  border: 2px solid #00ff88;
+  border-radius: 8px;
+  padding: 12px;
+  color: #00ff88;
+  font-size: 8px;
+  text-align: center;
+}
+
+.treasury-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 255, 136, 0.2);
+  text-align: center;
+}
+
+.treasury-footer small {
+  color: rgba(0, 255, 136, 0.6);
+  font-size: 7px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .treasury-status.full {
+    max-width: 100%;
+  }
+
+  .balance-amount {
+    font-size: 20px;
+  }
+
+  .treasury-header h3 {
+    font-size: 10px;
+  }
+
+  .detail-label,
+  .detail-value {
+    font-size: 7px;
+  }
+}
+
+/* Animation for status changes */
+.treasury-balance-display {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

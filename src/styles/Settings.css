@@ -1,0 +1,452 @@
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.settings-container {
+  background: #2d1b3d;
+  border: 4px solid #000;
+  box-shadow: 
+    0 0 0 4px #fff,
+    0 0 0 8px #000,
+    8px 8px 0 0 #000;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 4px solid #000;
+  background: #1a0f2e;
+}
+
+.settings-title {
+  color: #ffd700;
+  font-size: 16px;
+  margin: 0;
+  text-shadow: 
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+}
+
+.settings-close-button {
+  background: #ff6b6b;
+  color: #fff;
+  border: 3px solid #000;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.1s;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.settings-close-button:hover {
+  background: #ff7b7b;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.settings-close-button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.settings-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background: #1a0f2e;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background: #2d1b3d;
+  border: 3px solid #000;
+  box-shadow: 
+    0 0 0 2px #fff,
+    0 4px 0 #000;
+}
+
+.settings-label {
+  color: #ffd700;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-shadow: 
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+}
+
+.settings-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.settings-slider {
+  flex: 1;
+  height: 8px;
+  background: #1a0f2e;
+  border: 2px solid #000;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.settings-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4ecdc4;
+  border: 3px solid #000;
+  cursor: pointer;
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.settings-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4ecdc4;
+  border: 3px solid #000;
+  cursor: pointer;
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.settings-value {
+  color: #fff;
+  font-size: 10px;
+  min-width: 50px;
+  text-align: right;
+}
+
+.settings-radio-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.settings-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.settings-radio input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #4ecdc4;
+}
+
+.settings-toggle-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.settings-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1a0f2e;
+  border: 3px solid #000;
+  transition: 0.3s;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 2px 0 #000;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  border: 2px solid #000;
+  transition: 0.3s;
+  box-shadow: 0 2px 0 #000;
+}
+
+.settings-toggle input:checked + .toggle-slider {
+  background-color: #4ecdc4;
+}
+
+.settings-toggle input:checked + .toggle-slider:before {
+  transform: translateX(30px);
+}
+
+.dev-mode-panel {
+  margin-top: 15px;
+  padding: 15px;
+  background: #1a3d1a;
+  border: 3px solid #4ecdc4;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dev-info {
+  color: #4ecdc4;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.dev-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dev-input {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  padding: 8px;
+  background: #1a0f2e;
+  color: #ffd700;
+  border: 3px solid #000;
+  box-shadow: 
+    0 0 0 2px #fff,
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 100px;
+  text-align: center;
+}
+
+.dev-input:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px #fff,
+    0 0 0 4px #4ecdc4,
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dev-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  padding: 8px 12px;
+  border: 3px solid #000;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.1s;
+  box-shadow: 
+    0 3px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+.dev-button.add {
+  background: #4ecdc4;
+  color: #000;
+}
+
+.dev-button.add:hover {
+  background: #5eddd4;
+  transform: translateY(2px);
+  box-shadow: 
+    0 1px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dev-button.set {
+  background: #ffd700;
+  color: #000;
+}
+
+.dev-button.set:hover {
+  background: #ffed4e;
+  transform: translateY(2px);
+  box-shadow: 
+    0 1px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .settings-container {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  .settings-title {
+    font-size: 14px;
+  }
+
+  .settings-close-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .settings-content {
+    padding: 15px;
+  }
+
+  .settings-section {
+    padding: 12px;
+  }
+
+  .dev-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dev-input {
+    width: 100%;
+  }
+
+  .dev-button {
+    width: 100%;
+  }
+}
+
+/* Light theme styles */
+:root.light-theme {
+  --bg-primary: #f0f0f0;
+  --bg-secondary: #e0e0e0;
+  --text-primary: #000;
+  --border-color: #333;
+}
+
+:root.light-theme body {
+  background: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 100%);
+}
+
+:root.light-theme .app-container {
+  background: #f0f0f0;
+  border-color: #333;
+}
+
+:root.light-theme .app-title {
+  color: #d97706;
+}
+
+:root.light-theme .mode-button,
+:root.light-theme .nav-button {
+  background: #60a5fa;
+  color: #fff;
+}
+
+:root.light-theme .mode-button.active,
+:root.light-theme .nav-button.active {
+  background: #f59e0b;
+}
+
+:root.light-theme .cat-room {
+  border-color: #333;
+}
+
+
+/* Action Button (for Transaction History) */
+.settings-action-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a3a0 100%);
+  border: 3px solid #3a8f8c;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.settings-action-button:hover {
+  background: linear-gradient(135deg, #45b8af 0%, #3a8f8c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+}
+
+.settings-action-button:active {
+  transform: translateY(0);
+}
+
+/* Developer Options */
+.dev-option {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.dev-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 10px;
+  color: #b8b8d1;
+}
+
+.dev-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.dev-hint {
+  margin-top: 5px;
+  margin-left: 28px;
+  font-size: 8px;
+  color: #9b8ac4;
+  font-style: italic;
+}

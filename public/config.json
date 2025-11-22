@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "contractIds": {
+    "gamePackageId": "0xaa248b205bb247b4cafb6d8243ffe29118721b97bcefd33c87b239b642768de3",
+    "gameState": "0xf49315984fdddeebabd6f29577c263a8475ef5ff80f622c46034a31f5d52baf6",
+    "treasury": "0xc68322e94e54691ce03c3e37c85cb16e5c1fd87a94d3680651f38203e4436e76",
+    "upgradeCap": "0x7e52cfd55831574cdcf197fb19da53e5c3b76f1f0e49ef5b9fd44521e62bae2b",
+    "clock": "0x0000000000000000000000000000000000000000000000000000000000000006"
+  },
+  "network": {
+    "rpcUrl": "https://rpc-testnet.onelabs.cc:443",
+    "chainId": 1337,
+    "explorerUrl": "https://explorer-testnet.onelabs.cc"
+  },
+  "limits": {
+    "dailyOctCap": 100,
+    "dailySessions": 100
+  },
+  "lastUpdated": "2025-11-22T02:26:00Z"
+}
+
+

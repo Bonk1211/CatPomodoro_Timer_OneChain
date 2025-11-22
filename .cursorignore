@@ -1,0 +1,7 @@
+# Allow AI to access .env file for configuration updates
+!.env
+
+# This file tells Cursor which files to NOT ignore
+# The ! prefix means "don't ignore this file"
+# This allows AI to read and edit .env for development purposes
+

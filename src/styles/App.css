@@ -1,0 +1,738 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.app {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.app-container {
+  background: #2d1b3d;
+  border: 4px solid #000;
+  border-radius: 0;
+  padding: 30px;
+  box-shadow: 
+    0 0 0 4px #fff,
+    0 0 0 8px #000,
+    8px 8px 0 0 #000;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.app-title {
+  color: #ffd700;
+  font-size: 24px;
+  text-shadow: 
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+  letter-spacing: 2px;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wallet-connection-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.auto-connect-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', cursive;
+  white-space: nowrap;
+}
+
+.auto-connect-status.idle {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border: 2px solid #ffc107;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.auto-connect-status.attempted {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 2px solid #4caf50;
+}
+
+.auto-connect-status.disabled {
+  background: rgba(158, 158, 158, 0.2);
+  color: #9e9e9e;
+  border: 2px solid #9e9e9e;
+}
+
+.auto-connect-status.prompt {
+  background: rgba(33, 150, 243, 0.2);
+  color: #2196f3;
+  border: 2px solid #2196f3;
+  animation: pulse 2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.auto-connect-status.prompt:hover {
+  background: rgba(33, 150, 243, 0.3);
+}
+
+.auto-connect-status .status-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.auto-connect-status .status-text {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Transaction Status Styles */
+.transaction-status {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  text-align: center;
+  border: 2px solid;
+  animation: slideIn 0.3s ease-out;
+}
+
+.transaction-status.pending {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+.transaction-status.success {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border-color: #4caf50;
+}
+
+.transaction-status.error {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border-color: #f44336;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shop-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 8px 16px;
+  background: #4ecdc4;
+  color: #000;
+  border: 3px solid #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shop-button:hover {
+  background: #5eddd4;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shop-button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gallery-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 8px 16px;
+  background: #9b59b6;
+  color: #fff;
+  border: 3px solid #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gallery-button:hover {
+  background: #ab69c6;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gallery-button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.settings-button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bgm-toggle-button {
+  padding: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+  min-width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.bgm-toggle-button:hover {
+  transform: translateY(2px);
+  opacity: 0.9;
+}
+
+.bgm-toggle-button:active {
+  transform: translateY(4px);
+  opacity: 0.8;
+}
+
+.bgm-toggle-button .bgm-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.settings-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 8px 16px;
+  background: #ff6b6b;
+  color: #fff;
+  border: 3px solid #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.settings-button:hover {
+  background: #ff7b7b;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.settings-button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.page-navigation {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.nav-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 12px 24px;
+  background: #4a90e2;
+  color: #fff;
+  border: 3px solid #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+  background: #5aa0f2;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-button.active {
+  background: #ff6b6b;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.mode-switcher {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.mode-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 12px 24px;
+  background: #4a90e2;
+  color: #fff;
+  border: 3px solid #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mode-button:hover {
+  background: #5aa0f2;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mode-button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mode-button.active {
+  background: #ff6b6b;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.cat-page-area {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .app-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .header-controls {
+    justify-content: center;
+  }
+
+  .shop-button,
+  .gallery-button,
+  .settings-button {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+  
+  .bgm-toggle-button {
+    min-width: 40px;
+    height: 40px;
+    padding: 2px;
+  }
+
+  .nav-button {
+    font-size: 10px;
+    padding: 10px 16px;
+  }
+
+  .mode-button {
+    font-size: 10px;
+    padding: 10px 16px;
+  }
+
+  .app-container {
+    padding: 20px;
+  }
+}
+
+/* Light theme styles */
+:root.light-theme body {
+  background: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 100%);
+}
+
+:root.light-theme .app-container {
+  background: #f0f0f0;
+  border-color: #333;
+  box-shadow: 
+    0 0 0 4px #fff,
+    0 0 0 8px #333,
+    8px 8px 0 0 #333;
+}
+
+:root.light-theme .app-title {
+  color: #d97706;
+}
+
+:root.light-theme .mode-button,
+:root.light-theme .nav-button {
+  background: #60a5fa;
+  color: #fff;
+}
+
+:root.light-theme .mode-button.active,
+:root.light-theme .nav-button.active {
+  background: #f59e0b;
+}
+
+:root.light-theme .coin-display {
+  background: #e0e0e0;
+  border-color: #333;
+  box-shadow: 
+    0 0 0 2px #fff,
+    0 4px 0 #333;
+}
+
+:root.light-theme .coin-amount {
+  color: #d97706;
+}
+
+:root.light-theme .shop-button {
+  background: #60a5fa;
+  color: #fff;
+}
+
+:root.light-theme .bgm-toggle-button {
+  background: transparent;
+}
+
+:root.light-theme .bgm-toggle-button:hover {
+  opacity: 0.85;
+}
+
+:root.light-theme .settings-button {
+  background: #f59e0b;
+  color: #000;
+}
+
+/* Wallet Prompt Modal */
+.wallet-prompt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.wallet-prompt-modal {
+  background: #1a0f2e;
+  border: 4px solid #000;
+  box-shadow: 
+    0 0 0 4px #fff,
+    0 0 0 8px #000,
+    0 8px 0 0 #000;
+  max-width: 500px;
+  width: 90%;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wallet-prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 4px solid #000;
+  background: #2d1b3d;
+}
+
+.wallet-prompt-header h2 {
+  color: #ffd700;
+  font-size: 16px;
+  margin: 0;
+  text-shadow: 
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+}
+
+.wallet-prompt-close {
+  background: #ff6b6b;
+  color: #fff;
+  border: 3px solid #000;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.1s;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.wallet-prompt-close:hover {
+  background: #ff7b7b;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-close:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-content {
+  padding: 25px;
+  background: #1a0f2e;
+}
+
+.wallet-prompt-content p {
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.wallet-prompt-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.wallet-prompt-content li {
+  color: #4ecdc4;
+  font-size: 10px;
+  padding: 8px 0;
+  line-height: 1.5;
+}
+
+.wallet-prompt-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.wallet-prompt-connect {
+  flex: 1;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 11px;
+  padding: 14px 20px;
+  background: #4ecdc4;
+  color: #000;
+  border: 3px solid #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-connect:hover {
+  background: #5eddd4;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-connect:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-offline {
+  flex: 1;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 11px;
+  padding: 14px 20px;
+  background: #555;
+  color: #fff;
+  border: 3px solid #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  box-shadow: 
+    0 4px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-offline:hover {
+  background: #666;
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-offline:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #000,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-prompt-note {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 9px;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .wallet-prompt-modal {
+    width: 95%;
+    max-width: none;
+  }
+
+  .wallet-prompt-header h2 {
+    font-size: 14px;
+  }
+
+  .wallet-prompt-content p {
+    font-size: 10px;
+  }
+
+  .wallet-prompt-content li {
+    font-size: 9px;
+  }
+
+  .wallet-prompt-actions {
+    flex-direction: column;
+  }
+
+  .wallet-prompt-connect,
+  .wallet-prompt-offline {
+    width: 100%;
+    font-size: 10px;
+    padding: 12px 16px;
+  }
+}
+

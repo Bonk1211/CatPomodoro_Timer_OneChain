@@ -1,0 +1,39 @@
+# Instructions for Server Configuration
+# Add these headers to prevent config.json from being cached
+
+## For Nginx:
+location /config.json {
+    add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
+    add_header Pragma "no-cache";
+    add_header Expires "0";
+}
+
+## For Apache (.htaccess):
+<Files "config.json">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</Files>
+
+## For Vercel (vercel.json):
+{
+  "headers": [
+    {
+      "source": "/config.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, max-age=0"
+        }
+      ]
+    }
+  ]
+}
+
+## For Netlify (_headers file):
+/config.json
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Pragma: no-cache
+  Expires: 0
+
+
