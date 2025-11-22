@@ -5,7 +5,6 @@ import { ONECHAIN_CONFIG } from '../config/onechain.js';
 
 // Lazy load wallet clients to avoid import errors on page load
 let oneChainWalletClient = null;
-let suiWalletClient = null;
 
 // Lazy import function for OneChain wallet client
 async function getOneChainWalletClient() {
@@ -19,20 +18,6 @@ async function getOneChainWalletClient() {
     }
   }
   return oneChainWalletClient;
-}
-
-// Lazy import function for Sui wallet client (fallback)
-async function getSuiWalletClient() {
-  if (!suiWalletClient) {
-    try {
-      const module = await import('./suiWalletClient.js');
-      suiWalletClient = module.suiWalletClient;
-    } catch (error) {
-      console.warn('Failed to load Sui wallet client:', error);
-      return null;
-    }
-  }
-  return suiWalletClient;
 }
 
 /**
@@ -144,12 +129,8 @@ class OneWalletClient {
 
   /**
    * Get contract instance (EVM only)
-   * For Sui wallets, use suiBlockchainUtils instead
    */
   getContract(contractName, abi) {
-    if (this.walletType === 'sui') {
-      throw new Error('Sui wallet does not use EVM contracts. Use suiBlockchainUtils for Sui operations.');
-    }
 
     if (!this.signer) {
       throw new Error('Wallet not connected. Please connect your wallet first.');
@@ -183,12 +164,6 @@ class OneWalletClient {
     return this.walletType === 'onechain';
   }
 
-  /**
-   * Check if using Sui wallet (fallback)
-   */
-  isSuiWallet() {
-    return this.walletType === 'sui';
-  }
 
   /**
    * Get current account address
@@ -196,9 +171,6 @@ class OneWalletClient {
   getAccount() {
     if (this.walletType === 'onechain' && oneChainWalletClient) {
       return oneChainWalletClient.getAccount();
-    }
-    if (this.walletType === 'sui' && suiWalletClient) {
-      return suiWalletClient.getAccount();
     }
     return this.account;
   }
@@ -210,9 +182,6 @@ class OneWalletClient {
     if (this.walletType === 'onechain' && oneChainWalletClient) {
       return oneChainWalletClient.isWalletConnected();
     }
-    if (this.walletType === 'sui' && suiWalletClient) {
-      return suiWalletClient.isWalletConnected();
-    }
     return this.isConnected && this.account !== null;
   }
 
@@ -222,8 +191,6 @@ class OneWalletClient {
   disconnect() {
     if (this.walletType === 'onechain' && oneChainWalletClient) {
       oneChainWalletClient.disconnect();
-    } else if (this.walletType === 'sui' && suiWalletClient) {
-      suiWalletClient.disconnect();
     }
     this.provider = null;
     this.signer = null;
@@ -240,9 +207,6 @@ class OneWalletClient {
     if (this.walletType === 'onechain' && oneChainWalletClient) {
       return await oneChainWalletClient.getNetwork();
     }
-    if (this.walletType === 'sui' && suiWalletClient) {
-      return await suiWalletClient.getNetwork();
-    }
     if (!this.provider) {
       throw new Error('Provider not initialized');
     }
@@ -257,10 +221,6 @@ class OneWalletClient {
       oneChainWalletClient.onAccountsChanged(callback);
       return;
     }
-    if (this.walletType === 'sui' && suiWalletClient) {
-      suiWalletClient.onAccountsChanged(callback);
-      return;
-    }
     if (window.ethereum || window.onewallet) {
       const provider = window.onewallet || window.ethereum;
       provider.on('accountsChanged', callback);
@@ -273,10 +233,6 @@ class OneWalletClient {
   onChainChanged(callback) {
     if (this.walletType === 'onechain' && oneChainWalletClient) {
       oneChainWalletClient.onNetworkChanged(callback);
-      return;
-    }
-    if (this.walletType === 'sui' && suiWalletClient) {
-      suiWalletClient.onNetworkChanged(callback);
       return;
     }
     if (window.ethereum || window.onewallet) {
