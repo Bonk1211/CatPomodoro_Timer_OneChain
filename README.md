@@ -37,7 +37,7 @@ A Pomodoro timer app that rewards you with **1 OCT token** for every 25-minute w
 ### Step 1: Connect Your Wallet
 
 1. **Install OneWallet** browser extension
-   - Download from [OneChain website](https://onelabs.cc)
+   - Download from [OneChain website](https://chromewebstore.google.com/detail/onewallet/gclmcgmpkgblaglfokkaclneihpnbkli)
    - Available for Chrome, Firefox, and Edge
 
 2. **Open the App**
